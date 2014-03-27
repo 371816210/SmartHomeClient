@@ -81,8 +81,8 @@ public class VideoPlayerActivity extends Activity implements
 									int visibility) {
 								if (visibility == mUiVisibility)
 									return;
-								setSurfaceSize(mVideoWidth, mVideoHeight,
-										mSarNum, mSarDen);
+							//	setSurfaceSize(mVideoWidth, mVideoHeight,
+							//			mSarNum, mSarDen);
 								if (visibility == View.SYSTEM_UI_FLAG_VISIBLE) {
 									Log.d(TAG, "onSystemUiVisibilityChange");
 								}
@@ -98,10 +98,10 @@ public class VideoPlayerActivity extends Activity implements
 				String path = getIntent().getStringExtra("path");
 
 				// String pathUri = LibVLC.getInstance().nativeToURI(path);
-				 String pathUri="rtsp://192.168.4.106:8086?h264&camera=front&amr";
+				 String pathUri="rtsp://192.168.0.103:8086?h264&camera=front";
 				//String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
 				mLibVLC.readMedia(pathUri, false);
-				handler.sendEmptyMessageDelayed(0, 1000);
+				//handler.sendEmptyMessageDelayed(0, 1000);
 			}
 		} catch (LibVlcException e) {
 			e.printStackTrace();
@@ -124,14 +124,14 @@ public class VideoPlayerActivity extends Activity implements
 //		} 
 //		else if (v.getId() == btnForward.getId()) {
 //		} 
-		if (v.getId() == btnSize.getId()) {
+	/*	if (v.getId() == btnSize.getId()) {
 			if (mCurrentSize < SURFACE_ORIGINAL) {
 				mCurrentSize++;
 			} else {
 				mCurrentSize = 0;
 			}
 			changeSurfaceSize();
-		}
+		}  */
 
 	}
 
@@ -162,7 +162,7 @@ public class VideoPlayerActivity extends Activity implements
 		mSeekBar = (SeekBar) findViewById(R.id.video_player_seekbar);
 		mTextShowInfo = (TextView) findViewById(R.id.video_player_showinfo);
 
-		mSeekBar.setOnSeekBarChangeListener(seekBarChangeListener);
+	//	mSeekBar.setOnSeekBarChangeListener(seekBarChangeListener);
 	
 		btnPlayPause.setOnClickListener(this);
 		btnSize.setOnClickListener(this);
@@ -211,7 +211,7 @@ public class VideoPlayerActivity extends Activity implements
 			mSeekBar.setMax(length);
 			mSeekBar.setProgress(time);
 			showVideoTime(time, length);
-			handler.sendEmptyMessageDelayed(0, 1000);
+		//	handler.sendEmptyMessageDelayed(0, 1000);
 		}
 	};
 
@@ -220,7 +220,7 @@ public class VideoPlayerActivity extends Activity implements
 		mTextLength.setText(millisToString(l));
 	}
 
-	private OnSeekBarChangeListener seekBarChangeListener = new OnSeekBarChangeListener() {
+/*	private OnSeekBarChangeListener seekBarChangeListener = new OnSeekBarChangeListener() {
 		@Override
 		public void onStopTrackingTouch(SeekBar seekBar) {
 		}
@@ -235,18 +235,18 @@ public class VideoPlayerActivity extends Activity implements
 			if (fromUser) {
 				if (mLibVLC != null) {
 					if (!mLibVLC.isPlaying()) {
-						mLibVLC.play();
+					//	mLibVLC.play();
 					}
-					mLibVLC.setTime(progress);
+				//	mLibVLC.setTime(progress);
 				}
 			}
 		}
-	};
+	}; */
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		setSurfaceSize(mVideoWidth, mVideoHeight, mSarNum, mSarDen);
-		super.onConfigurationChanged(newConfig);
+	//	setSurfaceSize(mVideoWidth, mVideoHeight, mSarNum, mSarDen);
+	//	super.onConfigurationChanged(newConfig);
 	}
 	 public void setSurfaceSize(int width, int height, int sar_num, int sar_den) {
 	        // store video size
@@ -255,9 +255,9 @@ public class VideoPlayerActivity extends Activity implements
 	        mSarNum = sar_num;
 	        mSarDen = sar_den;
 	        Message msg = mHandler.obtainMessage(SURFACE_SIZE);
-	        mHandler.sendMessage(msg);
-	    }
-//	public void setSurfaceSize(int width, int height) {
+	      //  mHandler.sendMessage(msg);
+	    } 
+//	public void setSurfaceSize(int widtlih, int height) {
 //		// store video size
 //		mVideoHeight = height;
 //		mVideoWidth = width;
@@ -374,7 +374,7 @@ public class VideoPlayerActivity extends Activity implements
 	}
 
 	
-	private final SurfaceHolder.Callback mSurfaceCallback = new Callback() {
+/*	private final SurfaceHolder.Callback mSurfaceCallback = new Callback() {
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width,
 				int height) {
@@ -396,7 +396,7 @@ public class VideoPlayerActivity extends Activity implements
 		public void surfaceDestroyed(SurfaceHolder holder) {
 			mLibVLC.detachSurface();
 		}
-	};
+	};  */
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
