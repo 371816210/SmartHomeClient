@@ -6,6 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:focusable="true"  
+    android:focusableInTouchMode="true"
     tools:context=".SmartHomeClientActivity" >
 
     <SurfaceView
@@ -14,35 +16,33 @@
         android:layout_height="450dp"
          android:layout_gravity="center" />
 
-    <!-- <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
-        android:layout_alignBottom="@+id/editText1"
-        android:layout_marginLeft="33dp"
-        android:layout_toRightOf="@+id/surfaceView1"
-        android:text="smart home server ip:" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_toRightOf="@id/surfaceView1"
+            android:text="smart home server ip:" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/surfaceView1"
-        android:layout_marginLeft="68dp"
-        android:layout_toRightOf="@+id/textView1"
-        android:ems="10" >
+      <EditText
+           android:id="@+id/editText1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@id/textView1"
+           android:layout_below="@id/textView1"
+           android:layout_marginTop="50dp"
+           android:ems="10"
+           android:inputType="textUri" >
 
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="22dp"
-        android:text="Connect Server" /> -->
+       </EditText>
+           
+         <Button
+             android:id="@+id/button1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@id/editText1"
+             android:layout_below="@id/editText1"
+             android:layout_marginTop="50dp"
+             android:text="Connect Server" />
 
 </RelativeLayout>

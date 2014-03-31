@@ -54,8 +54,8 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_smart_home_client);
 		mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView1);
-	//	mServerIP = (EditText)findViewById(R.id.editText1);
-	//	btnConnect = (Button)findViewById(R.id.button1);
+		mServerIP = (EditText)findViewById(R.id.editText1);
+		btnConnect = (Button)findViewById(R.id.button1);
 	    surfaceHolder = mSurfaceView.getHolder();
 	    surfaceHolder.setFormat(PixelFormat.RGBX_8888);
 		surfaceHolder.addCallback(this);
@@ -63,42 +63,29 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 		try {
 			LibVLC.useIOMX(true);
 			mLibVLC = LibVLC.getInstance();
-		    mRtspURL="rtsp://192.168.4.106:8086?h264&camera=front&amr";
+		    //mRtspURL="rtsp://192.168.4.106:8086?h264&camera=front&amr";
 			//String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
-			mLibVLC.readMedia(mRtspURL, false);
+			//mLibVLC.readMedia(mRtspURL, false);
 		} catch (LibVlcException e) {
 			e.printStackTrace();
 		}
 		
 		
 		
-	/*	btnConnect.setOnClickListener(new View.OnClickListener() {
+		btnConnect.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				mRtspURL = "rtsp://"+mServerIP.getText() ;
-				try {
-					LibVLC.useIOMX(true);
-					mLibVLC = LibVLC.getInstance();
-				
-					if (mLibVLC != null) {
-						
-						String path = getIntent().getStringExtra("path");
-
-						// String pathUri = LibVLC.getInstance().nativeToURI(path);
-					       mRtspURL="rtsp://192.168.0.103:8086?h264&camera=front&amr";
-						//String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
-						mLibVLC.readMedia(mRtspURL, false);
-						//handler.sendEmptyMessageDelayed(0, 1000);
-					}
-				} catch (LibVlcException e) {
-					e.printStackTrace();
+				if (mLibVLC != null) {
+					// String pathUri = LibVLC.getInstance().nativeToURI(path);
+				    // mRtspURL="rtsp://192.168.4.106:8086?h264&camera=front&amr";
+					// String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
+					mLibVLC.readMedia(mRtspURL, false);
 				}
-
-				
 			}
-		});  */
+		});  
 		
 	}
 
