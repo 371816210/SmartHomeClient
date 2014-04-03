@@ -56,7 +56,7 @@ public class VideoPlayerActivity extends Activity implements
 	private static final int SURFACE_16_9 = 4;
 	private static final int SURFACE_4_3 = 5;
 	private static final int SURFACE_ORIGINAL = 6;
-	private int mCurrentSize = SURFACE_BEST_FIT;
+	private int mCurrentSize = SURFACE_4_3;
 
 	//private String[] mAudioTracks;
 
@@ -95,7 +95,7 @@ public class VideoPlayerActivity extends Activity implements
 			if (mLibVLC != null) {
 				String path = getIntent().getStringExtra("path");
 
-				// String pathUri = LibVLC.getInstance().nativeToURI(path);
+				//String pathUri = LibVLC.getInstance().nativeToURI(path);
 				 String pathUri="rtsp://192.168.4.106:8086?h264&camera=front&amr";
 				//String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
 				mLibVLC.readMedia(pathUri, false);

@@ -175,5 +175,9 @@
     <string name="title_activity_smart_home_client">SmartHomeClientActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="txt_server">SmartHome Server Address:</string>
+    <string name="txt_rtsp">rtsp://</string>
+    <string name="txt_connect">Connect</string>
+    <string name="txt_port">port:</string>
 
 </resources>

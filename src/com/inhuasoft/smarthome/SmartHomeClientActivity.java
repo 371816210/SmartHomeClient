@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.R.integer;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.view.Menu;
@@ -24,7 +25,7 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 	private SurfaceView mSurfaceView;
 	private SurfaceHolder surfaceHolder = null;
 	private Button btnConnect ;
-	private EditText  mServerIP;
+	private EditText  mServerIP ,mPort;
 	
 	private String mRtspURL =  null;
     private	LibVLC mLibVLC = null;
@@ -55,6 +56,8 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 		setContentView(R.layout.activity_smart_home_client);
 		mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView1);
 		mServerIP = (EditText)findViewById(R.id.editText1);
+		mPort = (EditText)findViewById(R.id.editText4);
+		initView();
 		btnConnect = (Button)findViewById(R.id.button1);
 	    surfaceHolder = mSurfaceView.getHolder();
 	    surfaceHolder.setFormat(PixelFormat.RGBX_8888);
@@ -77,10 +80,16 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				mRtspURL = "rtsp://"+mServerIP.getText() ;
+				
+				if (!("".equals(mServerIP.getText()))&&(!"".equals(mPort.getText()))) {
+					 SharedPreferences ServerInfo = getSharedPreferences("server_info", 0);  
+					 ServerInfo.edit().putString("ip", mServerIP.getText().toString()).commit();  
+					 ServerInfo.edit().putString("port", mPort.getText().toString()).commit();  
+				}	
+				mRtspURL = "rtsp://"+mServerIP.getText()+":"+mPort.getText() ;
 				if (mLibVLC != null) {
 					// String pathUri = LibVLC.getInstance().nativeToURI(path);
-				    // mRtspURL="rtsp://192.168.4.106:8086?h264&camera=front&amr";
+				    // mRtspURL="rtsp://192.168.4.102:8086?h264&camera=front&amr";
 					// String pathUri = "rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp";
 					mLibVLC.readMedia(mRtspURL, false);
 				}
@@ -89,6 +98,16 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 		
 	}
 
+	
+	   private void initView() {  
+	        SharedPreferences ServerInfo = getSharedPreferences("server_info", 0);  
+	        String ip = ServerInfo.getString("ip", "192.168.4.102");  
+	        String port = ServerInfo.getString("port", "8086");  
+	        mServerIP.setText(ip);  
+	        mPort.setText(port);  
+	    } 
+	
+	
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
@@ -238,8 +257,8 @@ public class SmartHomeClientActivity extends Activity implements SurfaceHolder.C
 			//	mTextShowInfo.setText(R.string.video_player_original);
 				//dh = mVideoHeight;
 				//dw = mVideoWidth;
-				dh = 450;
-				dw = 600;
+				dh = 350;
+				dw = 500;
 				break;
 			}
 
