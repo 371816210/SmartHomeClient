@@ -7,7 +7,6 @@
             android:summary="@string/directories_summary"
             android:title="@string/directories" />
     </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/main_prefs_category" >
         <ListPreference
             android:defaultValue="0"
@@ -15,6 +14,7 @@
             android:entryValues="@array/screen_orientation_values"
             android:key="screen_orientation"
             android:title="@string/screen_orientation" />
+
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="enable_brightness_gesture"
@@ -36,7 +36,6 @@
             android:summary="@string/enable_steal_remote_control_summary"
             android:title="@string/enable_steal_remote_control" />
     </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/performance_prefs_category" >
         <ListPreference
             android:defaultValue=""
@@ -50,20 +49,23 @@
             android:entries="@array/deblocking_list"
             android:entryValues="@array/deblocking_values"
             android:key="deblocking"
-            android:title="@string/deblocking"
-            android:summary="@string/deblocking_summary" />
+            android:summary="@string/deblocking_summary"
+            android:title="@string/deblocking" />
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enable_frame_skip"
             android:summary="@string/enable_frame_skip_summary"
             android:title="@string/enable_frame_skip" />
+
         <ListPreference
             android:defaultValue="-1"
             android:entries="@array/hardware_acceleration_list"
             android:entryValues="@array/hardware_acceleration_values"
             android:key="hardware_acceleration"
-            android:title="@string/hardware_acceleration"
-            android:summary="@string/hardware_acceleration_summary" />
+            android:summary="@string/hardware_acceleration_summary"
+            android:title="@string/hardware_acceleration" />
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enable_time_stretching_audio"
@@ -71,7 +73,8 @@
             android:title="@string/enable_time_stretching_audio" />
     </PreferenceCategory>
 
-    <!-- <PreferenceCategory android:title="@string/other_prefs_category" >
+    <!--
+    <PreferenceCategory android:title="@string/other_prefs_category" >
         <ListPreference
             android:defaultValue=""
             android:entries="@array/subtitles_encoding_list"
@@ -86,7 +89,8 @@
             android:enabled="true"
             android:key="clear_media_db"
             android:title="@string/clear_media_db" />
-    </PreferenceCategory> -->
+    </PreferenceCategory>
+    -->
     <PreferenceCategory android:title="@string/advanced_prefs_category" >
         <CheckBoxPreference
             android:defaultValue="true"
@@ -103,19 +107,17 @@
                 android:key="aout"
                 android:summary="@string/aout_summary"
                 android:title="@string/aout" />
-
             <ListPreference
                 android:key="vout"
                 android:summary="@string/vout_summary"
                 android:title="@string/vout" />
 
             <EditTextPreference
-                android:key="network_caching"
-                android:summary="@string/network_caching_summary"
-                android:title="@string/network_caching"
                 android:defaultValue=""
-                android:maxLength="5" />
-
+                android:key="network_caching"
+                android:maxLength="5"
+                android:summary="@string/network_caching_summary"
+                android:title="@string/network_caching" />
             <EditTextPreference
                 android:defaultValue=""
                 android:key="set_locale"
@@ -126,7 +128,6 @@
                 android:enabled="true"
                 android:key="quit_app"
                 android:title="@string/quit" />
-
             <Preference
                 android:enabled="true"
                 android:key="dump_logcat"

@@ -44,17 +44,11 @@ import org.videolan.libvlc.IVideoPlayer;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.LibVlcException;
 import org.videolan.libvlc.LibVlcUtil;
-//import org.videolan.libvlc.Media;
-//import org.videolan.vlc.AudioServiceController;
-//import org.videolan.vlc.MediaDatabase;
-//import org.videolan.vlc.R;
+
 import org.videolan.libvlc.Util;
 import org.videolan.libvlc.VLCApplication;
 import org.videolan.libvlc.WeakHandler;
-//import org.videolan.vlc.gui.CommonDialogs;
-//import org.videolan.vlc.gui.CommonDialogs.MenuType;
-//import org.videolan.vlc.gui.MainActivity;
-//import org.videolan.vlc.gui.PreferencesActivity;
+
 
 
 import android.annotation.TargetApi;
@@ -112,7 +106,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
     // Internal intent identifier to distinguish between internal launch and
     // external intent.
-    private final static String PLAY_FROM_VIDEOGRID = "com.viewprime.wifihcam.PLAY_FROM_VIDEOGRID";
+    private final static String PLAY_FROM_VIDEOGRID = "com.imhuasoft.smarthome.PLAY_FROM_VIDEOGRID";
 
     private SurfaceView mSurface;
     private SurfaceView mSubtitlesSurface;
@@ -226,7 +220,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
     private ImageButton mTakeSnapShot;
     private ImageButton mRecord;
 
-    private  String mrtspurl = "rtsp://192.168.4.102:8086";
+    private  String mrtspurl = "rtsp://192.168.4.107:8086";
     @Override
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     protected void onCreate(Bundle savedInstanceState) {
@@ -340,6 +334,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
         try {
             mLibVLC = Util.getLibVlcInstance();
+            mLibVLC.setHardwareAcceleration(mLibVLC.HW_ACCELERATION_FULL);
         } catch (LibVlcException e) {
             Log.d(TAG, "LibVLC initialisation failed");
             return;
@@ -369,7 +364,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
 			public void onClick(View arg0) {
 				if (mLibVLC.isPlaying()) {
-					File file = new File(Environment.getExternalStorageDirectory(), "/VLCTEST");
+					File file = new File(Environment.getExternalStorageDirectory(), "/SmartHome/Capture");
 					if (!file.exists())
 						file.mkdirs();// 创建文件夹
 					String pathname = file.getAbsolutePath() + "/P-" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".png";
@@ -400,7 +395,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
 							showInfo("录像完成！", 1000);
 						} else {//+ SecurityEngineForNtls.getInstance().mUserID + "/" + mCameraID + "/" + new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-							File file = new File(Environment.getExternalStorageDirectory(), "/VLCTEST");
+							File file = new File(Environment.getExternalStorageDirectory(), "/SmartHome/Video");
 							if (!file.exists())
 								file.mkdirs();// 创建文件夹
 							String pathname = file.getAbsolutePath() + "/V-" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
