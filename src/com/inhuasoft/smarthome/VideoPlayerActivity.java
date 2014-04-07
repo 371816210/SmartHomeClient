@@ -220,7 +220,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
     private ImageButton mTakeSnapShot;
     private ImageButton mRecord;
 
-    private  String mrtspurl = "rtsp://192.168.4.107:8086";
+    private  String mrtspurl = "rtsp://192.168.4.102:8086";
     @Override
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     protected void onCreate(Bundle savedInstanceState) {
@@ -334,7 +334,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
         try {
             mLibVLC = Util.getLibVlcInstance();
-            mLibVLC.setHardwareAcceleration(mLibVLC.HW_ACCELERATION_FULL);
+            mLibVLC.setHardwareAcceleration(mLibVLC.HW_ACCELERATION_AUTOMATIC);
         } catch (LibVlcException e) {
             Log.d(TAG, "LibVLC initialisation failed");
             return;
@@ -826,7 +826,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
                     Log.i(TAG, "MediaParsedChanged");
                     if (activity.mLibVLC.getVideoTracksCount() < 1) {
                         Log.i(TAG, "No video track, open in audio mode");
-                        activity.switchToAudioMode();
+                      //  activity.switchToAudioMode();
                     }
                     break;
                 case EventHandler.MediaPlayerPlaying:
