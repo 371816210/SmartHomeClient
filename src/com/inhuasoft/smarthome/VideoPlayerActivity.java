@@ -257,8 +257,10 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
         // Position and remaining time
         mTime = (TextView) findViewById(R.id.player_overlay_time);
         mTime.setOnClickListener(mRemainingTimeListener);
+        mTime.setVisibility(View.GONE);
         mLength = (TextView) findViewById(R.id.player_overlay_length);
         mLength.setOnClickListener(mRemainingTimeListener);
+        mLength.setVisibility(View.GONE);
 
         // the info textView is not on the overlay
         mInfo = (TextView) findViewById(R.id.player_overlay_info);
@@ -309,6 +311,7 @@ public class VideoPlayerActivity extends Activity implements IVideoPlayer {
 
         mSeekbar = (SeekBar) findViewById(R.id.player_overlay_seekbar);
         mSeekbar.setOnSeekBarChangeListener(mSeekListener);
+        mSeekbar.setVisibility(View.GONE);
 
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         mAudioMax = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
